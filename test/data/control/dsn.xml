@@ -1,0 +1,14 @@
+<?xml version='1.0' standalone='no' ?>
+<!DOCTYPE DASDSN SYSTEM 'dasdsn.dtd' >
+<DASDSN>
+  <DSN>
+    <SOURCE id="annotation" version="1.0">Ontology Annotation</SOURCE>
+    <MAPMASTER>http://www.ebi.ac.uk/das-srv/uniprot/das/aristotle/</MAPMASTER>
+    <DESCRIPTION>Ontology annotation data source</DESCRIPTION>
+  </DSN>
+  <DSN>
+    <SOURCE id="ontology-reference" version="1.0">Ontology Reference</SOURCE>
+    <MAPMASTER>http://localhost/ontology-reference/</MAPMASTER>
+    <DESCRIPTION>Ontology reference data source</DESCRIPTION>
+  </DSN>
+</DASDSN>

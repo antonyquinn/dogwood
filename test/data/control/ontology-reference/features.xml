@@ -1,0 +1,43 @@
+<?xml version='1.0' standalone='no' ?>
+<!DOCTYPE DASGFF SYSTEM 'dasgff.dtd' >
+<DASGFF>
+  <GFF version="1.0" href="http://localhost/ontology-reference/features?segment=P38398;segment=P94093">
+    <SEGMENT id="P94093" version="default" start="1" stop="466">
+      <FEATURE id="__dazzle__ECO:0000016_P94093_0_0" label="__dazzle__ECO:0000016_P94093_0_0">
+        <TYPE id="ECO:0000016">inferred from loss-of-function mutant phenotype</TYPE>
+        <METHOD id="ECO:0000016">inferred from loss-of-function mutant phenotype</METHOD>
+        <START>0</START>
+        <END>0</END>
+        <SCORE>-</SCORE>
+        <ORIENTATION>0</ORIENTATION>
+        <PHASE>-</PHASE>
+        <NOTE>Cells were stimulated and then starved</NOTE>
+        <LINK href="http://www.autolink.com/res?id=P94093">http://www.autolink.com/res?id=P94093</LINK>
+      </FEATURE>
+    </SEGMENT>
+    <SEGMENT id="P38398" version="default" start="1" stop="1863">
+      <FEATURE id="__dazzle__GO:0006915_P38398_0_0" label="__dazzle__GO:0006915_P38398_0_0">
+        <TYPE id="GO:0006915">apoptosis</TYPE>
+        <METHOD id="ECO:0000097">inferred from cDNA microarray</METHOD>
+        <START>0</START>
+        <END>0</END>
+        <SCORE>-</SCORE>
+        <ORIENTATION>0</ORIENTATION>
+        <PHASE>-</PHASE>
+        <LINK href="http://www.autolink.com/res?id=P38398">http://www.autolink.com/res?id=P38398</LINK>
+      </FEATURE>
+      <FEATURE id="__dazzle__GO:0005515_P38398_0_0" label="__dazzle__GO:0005515_P38398_0_0">
+        <TYPE id="GO:0005515">protein binding</TYPE>
+        <METHOD id="MI:0018">two hybrid</METHOD>
+        <START>0</START>
+        <END>0</END>
+        <SCORE>-</SCORE>
+        <ORIENTATION>0</ORIENTATION>
+        <PHASE>-</PHASE>
+        <TARGET id="P94028" start="0" stop="0" />
+        <TARGET id="P94093" start="0" stop="0" />
+        <LINK href="http://www.autolink.com/res?id=P38398">http://www.autolink.com/res?id=P38398</LINK>
+      </FEATURE>
+    </SEGMENT>
+  </GFF>
+</DASGFF>

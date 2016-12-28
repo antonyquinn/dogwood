@@ -1,0 +1,8 @@
+<?xml version='1.0' standalone='no' ?>
+<!DOCTYPE DASEP SYSTEM 'dasep.dtd' >
+<DASEP>
+  <ENTRY_POINTS href="http://localhost/ontology-reference/entry_points" version="1.0">
+    <SEGMENT id="P38398" size="1863" subparts="no" />
+    <SEGMENT id="P94093" size="466" subparts="no" />
+  </ENTRY_POINTS>
+</DASEP>

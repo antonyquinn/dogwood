@@ -1,0 +1,230 @@
+<?xml version="1.0"?>
+
+<!--
+  Copyright 2005 European Bioinformatics Institute.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<project name="Dogwood" default="dist" basedir=".">
+
+    <property file="build.properties"/>
+
+    <path id="classpath">
+        <fileset dir="${lib.dir}">
+            <include name="**/*.jar"/>
+        </fileset>
+        <pathelement path="${build.classes.dir}"/>
+    </path>
+
+    <path id="test.classpath">
+        <path refid="classpath"/>
+        <fileset dir="${test.lib.dir}">
+            <include name="**/*.jar"/>
+        </fileset>
+        <!--pathelement path="${test.build.dir}"/-->
+    </path>
+
+    <!-- Cleans, tests then builds JAR and JavaDocs -->
+    <target name="all"
+            depends="clean, test, release, javadocs"
+            description="Cleans, tests then builds JARs and JavaDocs">
+        <echo message="Built ${dist.war} and ${build.docs.api.dir}" />
+    </target>
+
+
+    <target name="init"
+            description="Make build and distribution directories">
+        <tstamp />
+        <mkdir dir="${build.dir}" />
+        <mkdir dir="${build.classes.dir}" />
+        <mkdir dir="${build.lib.dir}" />
+        <copy todir="${build.lib.dir}">
+            <fileset dir="${lib.dir}">
+                <include name="*.jar" />
+                <exclude name="servlet.jar" />
+            </fileset>
+        </copy>
+        <mkdir dir="${build.webapp.dir}" />
+        <mkdir dir="${dist.dir}" />
+        <mkdir dir="${release.dir}" />
+    </target>
+
+    <target name="clean"
+            description="Remove build and distribution directories">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+        <delete dir="${release.dir}"/>
+    </target>
+
+    <target name="compile"
+            depends="init"
+            description="Compile source code">
+        <javac srcdir="${src.dir}"
+               destdir="${build.classes.dir}">
+            <classpath refid="classpath"/>
+        </javac>
+    </target>
+
+    <target name="dist"
+            depends="compile"
+            description="Generate distribution">
+        <!-- Create JAR and copy dependencies to dist -->
+        <jar jarfile="${build.jar}"
+             basedir="${build.classes.dir}"/>
+        <copy todir="${dist.dir}">
+            <fileset dir="${build.lib.dir}">
+                <include name="*.jar" />
+            </fileset>
+        </copy>
+        <!-- Create WAR -->
+        <war destfile="${dist.war}"
+             webxml="${web.dir}/WEB-INF/web.xml">
+            <lib dir="${build.lib.dir}"/>
+            <fileset dir="${web.dir}">
+                <exclude name="WEB-INF/web.xml"/>
+            </fileset>
+        </war>
+        <unwar src="${dist.war}" dest="${build.webapp.dir}"/>
+    </target>
+
+    <target name="release"
+            depends="dist"
+            description="Creates source and binary releases">
+        <!-- WAR and JAR files -->
+        <copy file="${dist.war}" tofile="${release.war}" />
+        <copy file="${build.jar}" tofile="${release.jar}" />
+        <!-- Binaries -->
+        <tar destfile="${release.bin}" compression="gzip">
+            <tarfileset dir="."
+                        prefix="${release.prefix.bin}">
+                <include name="LICENSE.txt" />
+                <include name="README.txt" />
+            </tarfileset>
+            <tarfileset dir="${build.webapp.dir}"
+                        prefix="${release.prefix.bin}"
+                        preserveLeadingSlashes="true"/>
+        </tar>
+        <!-- Sources -->
+        <tar destfile="${release.src}" compression="gzip">
+            <tarfileset dir="."
+                        prefix="${release.prefix.src}"
+                        preserveLeadingSlashes="true">
+                <include name="*.*" />
+            </tarfileset>
+            <tarfileset dir="${ide.dir}"
+                        prefix="${release.prefix.src}/${ide.dir}"
+                        preserveLeadingSlashes="true"/>
+            <tarfileset dir="${lib.dir}"
+                        prefix="${release.prefix.src}/${lib.dir}"
+                        preserveLeadingSlashes="true"/>
+            <tarfileset dir="${src.dir}"
+                        prefix="${release.prefix.src}/${src.dir}"
+                        preserveLeadingSlashes="true"/>
+            <tarfileset dir="${test.dir}"
+                        prefix="${release.prefix.src}/${test.dir}"
+                        preserveLeadingSlashes="true"/>
+            <tarfileset dir="${web.dir}"
+                        prefix="${release.prefix.src}/${web.dir}"
+                        preserveLeadingSlashes="true"/>
+        </tar>
+    </target>
+
+    <target name="tag"
+            description="CVS tags the project">
+        <echo message="tag RELEASE-${version.cvs}"/>
+        <cvs command="tag RELEASE-${version.cvs}"/>
+    </target>
+
+    <target name="deploy"
+            depends="release"
+            description="Uploads the published files to SourceForge">
+        <ftp server="${ftp.server}"
+             remotedir="${ftp.remotedir}"
+             userid="${ftp.userid}"
+             password="${ftp.password}"
+             action="${ftp.action}">
+            <fileset dir="${release.dir}"/>
+        </ftp>
+    </target>
+
+    <target name="update"
+            description="Update JARs">
+        <get src="${update.hawthorn.url}"
+             dest="${update.hawthorn.file}"
+             usetimestamp="true"/>
+    </target>
+
+    <target name="javadocs"
+            depends="init"
+            description="Generate JavaDocs">
+        <javadoc destdir="${build.docs.api.dir}"
+                 author="true"
+                 version="true"
+                 use="true"
+                 windowtitle="${docs.window.title}"
+                 doctitle="${docs.title}"
+                 bottom="${docs.copyright}">
+            <classpath refid="classpath"/>
+            <fileset dir="${src.dir}"/>
+            <tag name="todo" scope="all" description="To do:" />
+        </javadoc>
+    </target>
+
+    <!-- Creates and initialises test directories -->
+    <target name="test-init"
+            depends="compile"
+            description="Prepares the test directory">
+      <mkdir  dir="${test.build.dir}" />
+      <delete dir="${test.build.data.dir}" />
+      <delete dir="${test.build.reports.dir}" />
+      <mkdir  dir="${test.build.data.dir}" />
+      <mkdir  dir="${test.build.reports.dir}" />
+      <copy todir="${test.build.data.dir}">
+          <fileset dir="${web.dir}"/>
+          <fileset dir="${test.data.dir}"/>
+      </copy>
+    </target>
+
+    <!-- Runs JUnit tests -->
+    <target name="test"
+            depends="test-init"
+            description="Runs JUnit tests">
+      <junit printsummary="false"
+             fork="yes"
+             dir="${test.junit.data.dir}"
+             errorProperty="test.failed"
+             failureProperty="test.failed">
+        <classpath refid="test.classpath"/>
+        <formatter type="brief" usefile="false" />
+        <formatter type="xml" />
+        <test name="${test.name}" todir="${test.build.reports.dir}"/>
+      </junit>
+      <junitreport todir="${test.build.reports.dir}">
+        <fileset dir="${test.build.reports.dir}"/>
+        <report format="frames" todir="${test.build.reports.dir}" />
+      </junitreport>
+      <fail message="Tests failed. Check reports in ${test.build.reports.dir}" if="test.failed" />
+    </target>
+
+    <target name="test-dist"
+            depends="test-init"
+            description="Adds test jars to distribution">
+        <copy todir="${dist.dir}">
+            <fileset dir="${test.lib.dir}">
+                <include name="*.jar" />
+            </fileset>
+        </copy>
+    </target>
+
+</project>

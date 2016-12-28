@@ -1,0 +1,50 @@
+DOGWOOD CHANGELOG
+==================
+
+
+Changes in version 1.0.4 (2006-05-15)
+------------------------------------
+
+Package uk.ac.ebi.dogwood.datasource
+* Replaced GFFSource with OntologyAwareSource
+
+Ant
+* Build classpaths dynamically
+
+lib
+* Moved test JARs to test/lib
+
+
+Changes in version 1.0.3 (2005-11-28)
+-------------------------------------
+
+Package uk.ac.ebi.dogwood.datasource
+* Do not override ontology term unless the ID is not recognised
+  in GFFOntologyReferenceSource
+
+
+Changes in version 1.0.2 (2005-11-23)
+-------------------------------------
+
+Package uk.ac.ebi.dogwood.datasource
+* GFFOntologyReferenceSource
+  - Removed Ontology_id and Dbxref (just use ID instead)
+  - Attributes now not case-sensitive (eg. ID or Id or id)
+
+Package uk.ac.ebi.dogwood.holder
+* Moved OntologyMapHolderImpl to impl package
+
+Ant
+* Added update task to get latest JARs
+
+lib
+* Updated biojava.jar, dazzle.jar and hawthorn.jar
+
+src
+* Moved source code to src/java and web files to src/web
+* web.xml: Removed name and description (should be specified in context.xml)
+
+test
+* Updated control data for ontology-reference data source
+* Use new syntax for GFF files (ID instead of Ontology_id and Dbxref)
+* Test new ${segment-id} syntax in dazzlecfg.xml (updated dazzle.jar)

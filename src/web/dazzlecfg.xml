@@ -1,0 +1,57 @@
+<!--
+    Sample Dazzle configuration for testing.
+-->
+
+<dazzle xmlns="http://www.biojava.org/2000/dazzle">
+
+    <resource id="sequences"            jclass="org.biojava.servlets.dazzle.holder.impl.SequenceResourceHolderImpl">
+        <string name="url"              value="http://www.ebi.ac.uk/das-srv/uniprot/das/aristotle/" />
+        <int    name="refreshInterval"  value="600" />
+    </resource>
+
+    <resource id="ontologies"          jclass="uk.ac.ebi.dogwood.holder.impl.OntologyMapHolderImpl">
+        <string name="propertiesFile"  value="/ontologies.properties" />
+    </resource>
+
+    <datasource id="ontology-reference" jclass="uk.ac.ebi.dogwood.datasource.GFFOntologyReferenceSource">
+        <string name="name"             value="Ontology Reference" />
+        <string name="description"      value="Ontology reference data source" />
+        <string name="version"          value="1.0" />
+        <string name="url"              value="/ontology-reference.gff" />
+        <!--
+        <string name="url"              value="http://www.example.com/reference.gff" />
+        <string name="userName"         value="user" />
+        <string name="password"         value="pass" />
+        -->
+        <int    name="refreshInterval"  value="10" />
+        <int    name="maxCachedFeatures" value="1000" />
+        <int    name="minLocation"      value="0" />
+        <string name="sequenceHolderID"     value="sequences" />
+        <string name="ontologyMapHolderID"  value="ontologies" />
+        <!--string name="linkType"      value="text/html" /-->
+        <boolean name="autoLink"        value="true" />
+        <!--string name="autoLinkUrl"      value="http://www.autolink.com/res?id=${segment-id}" /-->
+        <string name="autoLinkUrl"      value="http://www.autolink.com/res?id=${id}" />
+    </datasource>
+
+    <datasource id="annotation" jclass="uk.ac.ebi.dogwood.datasource.GFFOntologyAnnotationSource">
+        <string name="name"             value="Ontology Annotation" />
+        <string name="description"      value="Ontology annotation data source" />
+        <string name="version"          value="1.0" />
+        <string name="mapMaster"        value="http://www.ebi.ac.uk/das-srv/uniprot/das/aristotle/" />
+        <string name="url"              value="/annotation.gff" />
+        <!--
+        <string name="url"              value="http://www.example.com/annotation.gff" />
+        <string name="userName"         value="user" />
+        <string name="password"         value="pass" />
+        -->
+        <int    name="refreshInterval"  value="10" />
+        <int    name="maxCachedFeatures" value="1000" />
+        <int    name="minLocation"      value="0" />
+        <string name="ontologyMapHolderID"  value="ontologies" />
+        <boolean name="autoLink"        value="true" />
+        <string name="autoLinkUrl"      value="http://www.autolink.com/res?id=${segment-id}" />
+        <!--string name="autoLinkUrl"      value="http://www.autolink.com/res?id=${id}" /-->
+    </datasource>
+
+</dazzle>

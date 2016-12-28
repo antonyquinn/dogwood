@@ -1,0 +1,110 @@
+<?xml version='1.0' standalone='no' ?>
+<!DOCTYPE DASGFF SYSTEM 'dasgff.dtd' >
+<DASGFF>
+  <GFF version="1.0" href="http://localhost/annotation/features?segment=P94093;segment=P38398">
+    <SEGMENT id="P38398" version="default" start="1" stop="1863">
+      <FEATURE id="GO:0006915" label="apoptosis">
+        <TYPE id="GO:0008150">biological_process</TYPE>
+        <METHOD id="ECO:0000097">inferred from cDNA microarray</METHOD>
+        <START>0</START>
+        <END>0</END>
+        <SCORE>-</SCORE>
+        <ORIENTATION>0</ORIENTATION>
+        <PHASE>-</PHASE>
+        <LINK href="http://www.autolink.com/res?id=P38398">http://www.autolink.com/res?id=P38398</LINK>
+      </FEATURE>
+      <FEATURE id="39" label="39">
+        <TYPE id="GO:0005515">protein binding</TYPE>
+        <METHOD id="MI:0018">two hybrid</METHOD>
+        <START>0</START>
+        <END>0</END>
+        <SCORE>-</SCORE>
+        <ORIENTATION>0</ORIENTATION>
+        <PHASE>-</PHASE>
+        <LINK href="http://www.autolink.com/res?id=P38398">http://www.autolink.com/res?id=P38398</LINK>
+      </FEATURE>
+    </SEGMENT>
+    <SEGMENT id="P94093" version="default" start="1" stop="466">
+      <FEATURE id="__dazzle__GO:0005524_P94093_0_0" label="__dazzle__GO:0005524_P94093_0_0">
+        <TYPE id="GO:0005524">ATP binding</TYPE>
+        <METHOD id="ECO:0000016">inferred from loss-of-function mutant phenotype</METHOD>
+        <START>0</START>
+        <END>0</END>
+        <SCORE>-</SCORE>
+        <ORIENTATION>0</ORIENTATION>
+        <PHASE>-</PHASE>
+        <LINK href="http://www.autolink.com/res?id=P94093">http://www.autolink.com/res?id=P94093</LINK>
+      </FEATURE>
+      <FEATURE id="AG8337" label="AG8337">
+        <TYPE id="GO:0005524">ATP binding</TYPE>
+        <METHOD id="ECO:0000016">inferred from loss-of-function mutant phenotype</METHOD>
+        <START>0</START>
+        <END>0</END>
+        <SCORE>-</SCORE>
+        <ORIENTATION>0</ORIENTATION>
+        <PHASE>-</PHASE>
+        <LINK href="http://www.autolink.com/res?id=P94093">http://www.autolink.com/res?id=P94093</LINK>
+      </FEATURE>
+      <FEATURE id="AG8337" label="LIMS identifier">
+        <TYPE id="GO:0005524">ATP binding</TYPE>
+        <METHOD id="ECO:0000016">inferred from loss-of-function mutant phenotype</METHOD>
+        <START>0</START>
+        <END>0</END>
+        <SCORE>-</SCORE>
+        <ORIENTATION>0</ORIENTATION>
+        <PHASE>-</PHASE>
+        <LINK href="http://www.autolink.com/res?id=P94093">http://www.autolink.com/res?id=P94093</LINK>
+      </FEATURE>
+      <FEATURE id="AG8337" label="LIMS identifier">
+        <TYPE id="GO:0005524">ATP binding</TYPE>
+        <METHOD id="ECO:0000016">inferred from loss-of-function mutant phenotype</METHOD>
+        <START>0</START>
+        <END>0</END>
+        <SCORE>-</SCORE>
+        <ORIENTATION>0</ORIENTATION>
+        <PHASE>-</PHASE>
+        <NOTE>Further information</NOTE>
+        <LINK href="http://www.autolink.com/res?id=P94093">http://www.autolink.com/res?id=P94093</LINK>
+      </FEATURE>
+      <FEATURE id="AG8337" label="LIMS identifier">
+        <TYPE id="GO:0005524">ATP binding</TYPE>
+        <METHOD id="ECO:0000016">inferred from loss-of-function mutant phenotype</METHOD>
+        <START>0</START>
+        <END>0</END>
+        <SCORE>-</SCORE>
+        <ORIENTATION>0</ORIENTATION>
+        <PHASE>-</PHASE>
+        <NOTE>Further information</NOTE>
+        <TARGET id="P94028" start="0" stop="0" />
+        <TARGET id="P94093" start="0" stop="0" />
+        <LINK href="http://www.autolink.com/res?id=P94093">http://www.autolink.com/res?id=P94093</LINK>
+      </FEATURE>
+      <FEATURE id="AG8337" label="LIMS identifier">
+        <TYPE id="GO:0005524">ATP binding</TYPE>
+        <METHOD id="ECO:0000016">inferred from loss-of-function mutant phenotype</METHOD>
+        <START>0</START>
+        <END>0</END>
+        <SCORE>-</SCORE>
+        <ORIENTATION>0</ORIENTATION>
+        <PHASE>-</PHASE>
+        <NOTE>Further information</NOTE>
+        <TARGET id="P94028" start="0" stop="0" />
+        <TARGET id="P94093" start="0" stop="0" />
+        <LINK href="http://www.institute.org/myprotein.xls">http://www.institute.org/myprotein.xls</LINK>
+      </FEATURE>
+      <FEATURE id="AG8337" label="LIMS identifier">
+        <TYPE id="GO:0005524">ATP binding</TYPE>
+        <METHOD id="ECO:0000016">inferred from loss-of-function mutant phenotype</METHOD>
+        <START>0</START>
+        <END>0</END>
+        <SCORE>-</SCORE>
+        <ORIENTATION>0</ORIENTATION>
+        <PHASE>-</PHASE>
+        <NOTE>Further information</NOTE>
+        <TARGET id="P94028" start="0" stop="0" />
+        <TARGET id="P94093" start="0" stop="0" />
+        <LINK href="http://www.institute.org/myprotein.xls" type="application/msexcel">Excel spreadsheet of my protein</LINK>
+      </FEATURE>
+    </SEGMENT>
+  </GFF>
+</DASGFF>
